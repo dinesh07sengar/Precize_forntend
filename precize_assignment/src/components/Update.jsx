@@ -1,14 +1,40 @@
 import React, { useState } from 'react'
+import axios from "axios"
+import {useToast} from '@chakra-ui/react'
 
 export const Update = () => {
-    const [update, setupdate] = useState({ name: "", sat_score: "" })
-    const handleupdate = () => {
+    const [update, setupdate] = useState({ name: "", sat_score: 0 })
+    const toast = useToast()
+    const handleupdate = (e) => {
         let { name, value } = e.target
         setupdate({ ...update, [name]: value })
 
     }
     const handlesubmit=(e)=>{
         e.preventDefault()
+        let data ={...update}
+        axios.patch("http://localhost:5200/user/",data)
+        .then((d)=>{
+            console.log(d)
+            toast({
+                title: d.data.msg,
+                description: "We've Successfully logged your account.",
+                status: 'success',
+                duration: 9000,
+                isClosable: true,
+              })
+
+        }).catch((err)=>{
+            console.log(err)
+            toast({
+                title: 'update Failed.',
+                description: err,
+                status: 'fail',
+                duration: 9000,
+                isClosable: true,
+              })
+
+        })
     }
   return (
     <div>
@@ -19,7 +45,7 @@ export const Update = () => {
                             <h2>update Data</h2>
                             <form onSubmit={handlesubmit}>
                                 <input type="text" className="field" placeholder="Your Name" name='name' onChange={handleupdate} />
-                                <input type="number" className="field" placeholder="your SAT Score" name='set_score' onChange={handleupdate} />
+                                <input type="number" className="field" placeholder="your SAT Score" name='sat_score' onChange={handleupdate} />
 
                                 <input className="btn" type='submit' />
                             </form>

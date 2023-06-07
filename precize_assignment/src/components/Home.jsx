@@ -7,11 +7,11 @@ import { Delete } from './Delete'
 import { View } from './View'
 
 export const Home = () => {
-    
-    
+
+
     const [select, setselect] = useState({ insert: true, view: false, rank: false, update: false, delete: false, })
 
-   
+
     const handleselect = (e) => {
         let obj = { ...select, [e.target.value]: true }
         console.log(obj)
@@ -39,20 +39,20 @@ export const Home = () => {
             </div>
 
             {/* form component */}
-            {select.insert ?<Insert/>: null}
+            {select.insert ? <Insert /> : null}
 
             {/* update container */}
-            {select.update ?<Update/>: null}
+            {select.update ? <Update /> : null}
 
             {/* GEt rank container */}
-            {select.rank ?<Rank/>: null}
+            {select.rank ? <Rank /> : null}
 
             {/* Delete container */}
-            {select.delete ?<Delete/>: null}
+            {select.delete ? <Delete /> : null}
 
             {/* View all container */}
-            {select.view ? <View/>: null}
-            </div>
+            {select.view ? <View /> : null}
+        </div>
 
-            )
+    )
 }

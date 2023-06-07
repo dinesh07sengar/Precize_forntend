@@ -1,6 +1,10 @@
 import React from 'react'
+import axios from 'axios'
+import React, { useState } from 'react'
+import {useToast} from '@chakra-ui/react'
 
 export const Rank = () => {
+    const{name,setname}=useState("")
   return (
     <div>
          <div className="container">

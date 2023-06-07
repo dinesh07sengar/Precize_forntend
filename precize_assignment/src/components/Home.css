@@ -14,6 +14,7 @@
     height: 30px;
     padding: auto;
     padding-left: 2%;
+	border: 2px solid black;
 }
 
 .container:after{
@@ -82,9 +83,7 @@ h2:after{
 	background-color: rgba(0, 0, 0, 0.1);
 }
 
-textarea{
-	min-height: 150px;
-}
+
 
 .btn{
 	width: 100%;
@@ -111,10 +110,10 @@ textarea{
 /* table css */
 
 table {
-	position: absolute;
+	position: absolute; 
 	left: 50%;
 	top: 50%;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, 50%);
 	border-collapse: collapse;
 	width: 800px;
 	height: 200px;
@@ -145,6 +144,11 @@ h1 {
 	background-color: #16a085;
 	color: #fff;
 	padding: 10px 0px;
+	margin-top: 15px;
+}
+hr{
+	color: #27ae60;
+	border: 3px solid #27ae60;
 }
 
 tr:hover {
