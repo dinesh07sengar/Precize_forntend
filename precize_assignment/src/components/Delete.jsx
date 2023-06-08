@@ -3,12 +3,18 @@ import React, { useState } from 'react'
 import {useToast} from '@chakra-ui/react'
 
 export const Delete = () => {
-    const{name,setname}=useState("")
+    const[name,setname]=useState("")
     const toast = useToast()
+
+    const handlechange=(e)=>{
+      setname(e.target.value)
+
+    }
     const handleclick=()=>{
-        axios.delete("http://localhost:5200/user/",name)
+        axios.delete("https://precizebackend.onrender.com/user",name)
         .then((d)=>{
             console.log(d)
+            setname("")
             toast({
                 title: d.data.msg,
                 description: "Your data succesfully deleted.",
@@ -36,7 +42,7 @@ export const Delete = () => {
                     <div className="right">
                         <h2>Delete Data</h2>
 
-                        <input type="text" className="field" placeholder="Your Name" name='name' onChange={()=>setname(e.target.value)} />
+                        <input type="text" className="field" placeholder="Your Name"  value={name} onChange={handlechange} />
 
                         <button className="btn" onClick={handleclick} >Delete</button>
 

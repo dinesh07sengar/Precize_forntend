@@ -5,7 +5,7 @@ export const View = () => {
     const[state,setstate]=useState([])
 
     useEffect(()=>{
-        axios.get("http://localhost:5200/user/")
+        axios.get("https://precizebackend.onrender.com/user")
         .then((d)=>{
             let data = d.data?.sort((a,b)=>(a.sat_score>b.sat_score)?-1:1)
             setstate(data)

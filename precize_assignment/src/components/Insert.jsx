@@ -15,9 +15,10 @@ export const Insert = () => {
     const handlesubmit = (e) => {
         let data = {...state}
         e.preventDefault()
-        axios.post("http://localhost:5200/user/",data)
+        axios.post("https://precizebackend.onrender.com/user",data)
         .then((d)=>{
             console.log(d)
+            setstate({ name: "", address: "", city: "", country: "", pincode: "", sat_score: "" })
             toast({
                 title: d.data.msg,
                 description: "Your data succesfully added.",
@@ -50,12 +51,12 @@ export const Insert = () => {
                         <div className="right">
                             <h2>Insert Data</h2>
                             <form onSubmit={handlesubmit}>
-                                <input type="text" className="field" placeholder="Your Name" name='name' onChange={handlechange} />
-                                <input type="text" className="field" placeholder="Your address" name='address' onChange={handlechange} />
-                                <input type="text" className="field" placeholder="your city" name='city' onChange={handlechange} />
-                                <input type="text" className="field" placeholder="your county" name='country' onChange={handlechange} />
-                                <input type="number" className="field" placeholder="your pincode" name='pincode' onChange={handlechange} />
-                                <input type="number" className="field" placeholder="your SAT Score" name='sat_score' onChange={handlechange} />
+                                <input type="text" className="field" placeholder="Your Name"  value={state.name}  name='name' onChange={handlechange} />
+                                <input type="text" className="field" placeholder="Your address"  value={state.address} name='address' onChange={handlechange} />
+                                <input type="text" className="field" placeholder="your city"  value={state.city} name='city' onChange={handlechange} />
+                                <input type="text" className="field" placeholder="your county" value={state.country}  name='country' onChange={handlechange} />
+                                <input type="number" className="field" placeholder="your pincode" value={state.pincode}  name='pincode' onChange={handlechange} />
+                                <input type="number" className="field" placeholder="your SAT Score"  value={state.sat_score} name='sat_score' onChange={handlechange} />
 
                                 <input className="btn" type='submit' />
                             </form>

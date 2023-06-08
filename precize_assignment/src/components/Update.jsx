@@ -13,9 +13,10 @@ export const Update = () => {
     const handlesubmit=(e)=>{
         e.preventDefault()
         let data ={...update}
-        axios.patch("http://localhost:5200/user/",data)
+        axios.patch("https://precizebackend.onrender.com/user",data)
         .then((d)=>{
             console.log(d)
+            setupdate({ name: "", sat_score: "" })
             toast({
                 title: d.data.msg,
                 description: "We've Successfully logged your account.",
@@ -44,8 +45,8 @@ export const Update = () => {
                         <div className="right">
                             <h2>update Data</h2>
                             <form onSubmit={handlesubmit}>
-                                <input type="text" className="field" placeholder="Your Name" name='name' onChange={handleupdate} />
-                                <input type="number" className="field" placeholder="your SAT Score" name='sat_score' onChange={handleupdate} />
+                                <input type="text" className="field" placeholder="Your Name" value={update.name} name='name' onChange={handleupdate} />
+                                <input type="number" className="field" placeholder="your SAT Score" value={update.sat_score} name='sat_score' onChange={handleupdate} />
 
                                 <input className="btn" type='submit' />
                             </form>
